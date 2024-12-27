@@ -7,7 +7,7 @@ import { Component, HostListener, AfterViewInit,OnDestroy } from '@angular/core'
 })
 export class LandingComponent implements AfterViewInit, OnDestroy{
 
-  private currentIndex = 0;
+  currentIndex = 0;
   private intervalId: any;
   private startX = 0;
   private currentTranslate = 0;
@@ -28,7 +28,7 @@ export class LandingComponent implements AfterViewInit, OnDestroy{
   private startAutoScroll(): void {
     this.intervalId = setInterval(() => {
       this.next();
-    }, 3000);
+    }, 60000);
   }
 
   private stopAutoScroll(): void {
@@ -36,13 +36,20 @@ export class LandingComponent implements AfterViewInit, OnDestroy{
   }
 
   next(): void {
-    this.currentIndex = (this.currentIndex + 1) % this.getItems().length;
+    if(this.currentIndex + 1 < this.getItems().length){
+      this.currentIndex = this.currentIndex + 1;
+    }else{
+      this.currentIndex = 0;
+    }
     this.updateCarousel();
   }
 
   previous(): void {
-    this.currentIndex =
-      (this.currentIndex - 1 + this.getItems().length) % this.getItems().length;
+    if(this.currentIndex - 1 < 0){
+      this.currentIndex = this.getItems().length - 1;
+    }else{
+      this.currentIndex = this.currentIndex - 1 ;
+    }
     this.updateCarousel();
   }
 
@@ -73,46 +80,46 @@ export class LandingComponent implements AfterViewInit, OnDestroy{
 
     const startX =
       event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
-    this.startX = startX - this.currentTranslate;
+    this.startX = startX;
   }
 
   private drag(event: MouseEvent | TouchEvent): void {
     if (!this.isDragging) return;
     event.preventDefault();
-    const currentX =
-      event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
+  
+    const currentX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
     const moveX = currentX - this.startX;
+  
 
-    this.currentTranslate = moveX;
+    const offset = -this.currentIndex * 100 + (moveX / window.innerWidth) * 100;
+  
     this.getItems().forEach((item) => {
-      item.style.transform = `translateX(${moveX}px)`;
+      item.style.transform = `translateX(${offset}%)`;
     });
+  
+    this.currentTranslate = moveX; 
   }
-
   private endDrag(event: MouseEvent | TouchEvent): void {
     if (!this.isDragging) return;
 
     this.isDragging = false;
 
-    const currentX =
-      event instanceof MouseEvent ? event.clientX : event.changedTouches[0].clientX;
-    const distance = currentX - this.startX;
-
-    if (Math.abs(distance) > 50) {
-      if (distance < 0) {
+    if (Math.abs(this.currentTranslate) > 50) {
+      if (this.currentTranslate < 0) {
         this.next();
       } else {
         this.previous();
       }
-    } else {
-      this.updateCarousel(); 
     }
-
     this.startAutoScroll(); 
   }
 
-  private getItems(): NodeListOf<HTMLElement> {
-    return document.querySelectorAll<HTMLElement>('.fondo');
+  public getItems(): HTMLElement[] {
+    return Array.from(document.querySelectorAll<HTMLElement>('.fondo'));
+  }
+  jumpTo(index: number): void {
+    this.currentIndex = index;
+    this.updateCarousel();
   }
 
 }

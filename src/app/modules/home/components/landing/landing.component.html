@@ -1,20 +1,29 @@
 <div class="carousel">
-    <div class="fondo">
-      <h1>El sabor del Perú en cada bocado</h1>
-      <img
-        class="imagen"
-        src="https://github.com/C4rL0Xt/images_repo/blob/master/images/fondo11.webp?raw=true"
-      />
+  <button class="carousel-btn prev" (click)="previous()">&#8249;</button> <!-- Botón de atrás -->
+  <div class="fondo">
+      <h1>Carlitos es bebecito</h1>
+      <img src="https://github.com/C4rL0Xt/images_repo/blob/master/images/fondo11.webp?raw=true"/>
     </div>
     <div class="fondo">
       <img
-        src="https://github.com/C4rL0Xt/images_repo/blob/master/images/fondo2.jpg?raw=true"
+        src="https://github.com/C4rL0Xt/images_repo/blob/master/images/fondo20.jpg?raw=true"
         alt="imagen del fondo 2"
       />
     </div>
+    <div class="fondo">
+      <img
+        src="https://github.com/C4rL0Xt/images_repo/blob/master/images/restaurante.webp?raw=true"
+        alt="imagen del fondo 2"
+      />
+    </div>
+    <button class="carousel-btn next" (click)="next()">&#8250;</button> <!-- Botón de siguiente -->
+
   </div>
-  
-  <div class="controls">
-    <button (click)="previous()">Anterior</button>
-    <button (click)="next()">Siguiente</button>
+
+  <div class="carousel-indicators">
+    <span *ngFor="let _ of getItems(); let i = index" 
+          [class.active]="i === currentIndex" 
+          (click)="jumpTo(i)">
+      &#9679;
+    </span>
   </div>
