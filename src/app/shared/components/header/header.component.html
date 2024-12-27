@@ -1,11 +1,11 @@
 <header class="header">
     <div class="header-content">
-        <div class="logo-section">
-            <img src="https://github.com/C4rL0Xt/images_repo/blob/master/logotipo/ranchologo.png?raw=true" alt="Logo"/>
+        <div class="logo-section" routerLink="/">
+            <img src="https://github.com/C4rL0Xt/images_repo/blob/master/logotipo/logo_cortado.png?raw=true" alt="Logo"/>
         </div>
         <nav class="nav">
-            <div class="nav-option">
-                <a>Nuestra carta</a>
+            <div class="nav-option" routerLink="/carta/">
+                <a>La carta</a>
             </div>
             <div class="nav-option">
                 <a>Menus</a>
@@ -13,11 +13,38 @@
             <div class="nav-option">
                 <a>Promociones</a>
             </div>
+            <div class="nav-option">
+                <button class="button">
+                    Delivery
+                </button>
+            </div>
         </nav>
-        <div class="user-section">
-            <a class="icon user">Log In 
-                <img src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/user.png?raw=true"/>
-            </a>
+        <button class="menu-toggle" (click)="toggleMenu()">
+           <img src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/menu-toggle.png?raw=true" alt="Logo"/>
+        </button>
+    </div>
+    <div class="menu-options" [class.active]="menuOpen">
+        <button class="close-menu"  (click)="toggleMenu()">
+            <img src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/cerrar_icon2.png?raw=true" alt="Logo"/>
+        </button>
+        <div class="menu-icon">
+            <img src="https://github.com/C4rL0Xt/images_repo/blob/master/logotipo/logo_cortado.png?raw=true" alt="Logo"/>
         </div>
+        <nav class="opciones-toggle">
+            <div class="nav-option2" (click)="toggleMenu()">
+                <a>La carta</a>
+            </div>
+            <div class="nav-option2" (click)="toggleMenu()">
+                <a>Menus</a>
+            </div>
+            <div class="nav-option2" routerLink="/carta/" (click)="toggleMenu()">
+                <a>Promociones</a>
+            </div>
+            <div class="nav-option" (click)="toggleMenu()">
+                <button class="button">
+                    Delivery
+                </button>
+            </div>
+        </nav>
     </div>
 </header> 

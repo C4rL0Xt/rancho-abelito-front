@@ -1,0 +1,43 @@
+.static-button {
+    position: fixed;
+    top: 50%; 
+    right: 0px; 
+    transform: translateY(-50%);
+    background-color: #57e642;
+    color: white; 
+    padding: 10px 20px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px; 
+    border-top-right-radius: 0; 
+    border-bottom-right-radius: 0;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
+    text-align: center;
+}
+  
+.static-button:hover {
+    background-color: #23aa0f; 
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.content img {
+    max-height: 40px;
+    height: 40px;
+    max-width: 40px;
+    width: 40px;
+}
+
+.content a {
+    font-size: 17px;
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-style: bold;
+    color: #000000;
+}

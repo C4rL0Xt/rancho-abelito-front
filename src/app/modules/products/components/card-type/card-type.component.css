@@ -1,0 +1,97 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    cursor: pointer;
+    border-radius: 16px; /* Redondeado más moderno */
+    overflow: hidden;
+    position: relative;
+    width: 300px; 
+    height: 300px;
+    /*background: linear-gradient(135deg, #f3ec78, #af4261);  Fondo decorativo */
+    /*box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-container:hover {
+    transform: scale(1.05); /* Efecto de aumento */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Mayor sombra al hacer hover */
+}
+
+.image-section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px; /* Consistencia con el contenedor */
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%) brightness(0.9); /* Efecto estilizado */
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.card-container:hover .image {
+    transform: scale(1.1); /* Zoom en la imagen */
+    filter: grayscale(0%) brightness(1); /* Colores vivos */
+}
+
+.data-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px); /* Difuminado para estética */
+    padding: 16px 24px;
+    border-radius: 12px;
+    text-align: center;
+    width: 80%; 
+    opacity: 0; /* Oculto inicialmente */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translate(-50%, -40%); /* Desplazado hacia arriba inicialmente */
+}
+
+.card-container:hover .data-section {
+    opacity: 1; /* Aparece al hacer hover */
+    transform: translate(-50%, -50%); /* Vuelve a su posición original */
+}
+
+.data-section-title {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin: 0;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombras para mejorar legibilidad */
+}
+
+/* Responsividad mejorada */
+@media (max-width: 1200px) {
+    .card-container {
+        width: 200px;
+    }
+}
+
+@media (max-width: 630px) {
+    .card-container {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        width: 130px;
+        height: 150px;
+    }
+}

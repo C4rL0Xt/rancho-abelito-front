@@ -1,0 +1,57 @@
+.carousel{
+    overflow-x: hidden;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.carousel button{
+    position: absolute;
+}
+
+.fondo{
+    flex: 0 0 100%;
+    opacity: 0.8;
+    width: 100%;
+    height: calc(100% - 76px);
+    transform: translateX(0);
+}
+
+.fondo img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.fondo h1{
+    position: absolute;
+    width: 650px;
+    margin-left: 80px;
+    color: #ffffff;
+    font-size: 80px;
+    font-family: sans-serif;
+}
+
+.fondo2{
+    opacity: 0.8;
+    width: 100%;
+    height: calc(100% - 76px);
+}
+
+.fondo2 img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
