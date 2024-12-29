@@ -12,8 +12,9 @@
     flex-direction: column;
     height: 100%;
     width: 80%;
-    row-gap: 30px;
+    row-gap: 20px;
     padding: 20px;
+    margin-top: 20px;
     background: rgba(255, 255, 255, 0.9); /* Fondo translúcido */
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra ligera */
@@ -73,6 +74,13 @@
 }
 
 
+@media (max-width: 1024px) {
+    .content {
+        width: 95%;
+        padding: 15px;
+    }
+}
+
 
 @media (max-width: 480px) {
     .container {
@@ -81,7 +89,8 @@
 
     .content {
         width: 95%;
-        padding: 15px;
+        padding: 10px;
+        margin-top: 10px;
     }
 
     .header h1 {
@@ -90,5 +99,29 @@
 
     .header p {
         font-size: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        padding: 10px;
+    }
+
+    .content {
+        width: 90%;
+        padding: 10px;
+        margin-top: 10px;
+    }
+}
+
+
+@media (max-width: 360px) {
+    .content {
+        width: 92%;
+        padding: 5px;
+    }
+
+    .types {
+        gap: 5px;
     }
 }

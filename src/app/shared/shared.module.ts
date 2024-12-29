@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { AccountComponent } from './components/account/account.component';
 import { RouterModule } from '@angular/router';
+import{AuthModule} from '../modules/auth/auth.module'
 
 
 
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    AuthModule
   ],
   exports: [
     HeaderComponent,

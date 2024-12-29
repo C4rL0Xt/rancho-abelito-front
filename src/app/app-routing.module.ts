@@ -10,6 +10,9 @@ const routes: Routes = [
   }, {
     path: 'carta',
     loadChildren: () => import('./modules/products/products.module').then(m => m.ProductsModule)
+  },{
+    path: 'auth',
+    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
   }
 ];
 

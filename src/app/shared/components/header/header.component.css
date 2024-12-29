@@ -98,6 +98,7 @@
     padding-left: 20px;
     padding-right: 20px;
     box-sizing: border-box;
+    z-index: 9999;
 }
 
 .close-menu{

@@ -76,16 +76,43 @@
 }
 
 /* Responsividad mejorada */
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
     .card-container {
         width: 200px;
+        height: 220px;
     }
 }
 
-@media (max-width: 630px) {
+@media (max-width: 1024px) {
+    .card-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .data-section-title {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 834px) {
     .card-container {
         width: 180px;
         height: 180px;
+    }
+
+    .data-section-title {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        width: 150px;
+        height: 180px;
+    }
+
+    .data-section-title {
+        font-size: 0.9rem;
     }
 }
 
@@ -93,5 +120,31 @@
     .card-container {
         width: 130px;
         height: 150px;
+    }
+
+    .data-section-title {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .card-container {
+        width: 110px;
+        height: 150px;
+    }
+
+    .data-section-title {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .card-container {
+        width: 110px;
+        height: 150px;
+    }
+
+    .data-section-title {
+        font-size: 0.8rem;
     }
 }

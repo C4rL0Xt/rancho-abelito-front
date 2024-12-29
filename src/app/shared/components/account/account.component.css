@@ -1,6 +1,6 @@
 .static-button {
     position: fixed;
-    top: 50%; 
+    top: 40%; 
     right: 0px; 
     transform: translateY(-50%);
     background-color: #57e642;
@@ -13,7 +13,6 @@
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000; 
-    text-align: center;
 }
   
 .static-button:hover {
