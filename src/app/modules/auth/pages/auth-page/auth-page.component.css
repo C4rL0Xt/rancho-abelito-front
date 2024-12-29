@@ -5,20 +5,141 @@
     width: 50%;
     height: 90%;
     background-color: #ffffff;
-    display: flex;
     justify-content: center;
-    align-items: center;
+    display: flex;
     z-index: 1000;
     transform: translate(-50%, -50%);
-  }
+}
 
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-  }
+.imagen img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.8;
+  
+}
 
+.palabras{
+  z-index: 2000;
+  align-items: center;
+  
+}
+
+.palabras h1{
+  color: #ffffff;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  align-content: center;
+  font-size: 35px;
+
+}
+
+.palabras h2{
+  margin-top: 60px;
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  font-style: bold;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.boton {
+  margin-left: 1px;
+  top:10px;
+  left: 10px;
+  position: absolute;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 2;
+  color: #ffffff;
+}
+
+.boton button {
+  width: 38px;
+  background: none;
+  border: none;
+  border: 2px solid #ffffff; /* Borde blanco */
+  border-radius: 50%;
+  padding: 9px; 
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+  @media (max-width: 768px) {
+    .overlay {
+        width: 90%;
+        height: 95%;
+        max-width: 460px;
+        max-height: 685px;
+    }
+}
+
+.type{
+  position: absolute;
+  margin-top: 190px;
+  z-index: 2000;
+}
+
+.clientes{
+  width: 330px;
+  height: 180px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.empleados{
+  margin-top: 30px;
+  width: 330px;
+  height: 180px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.clientes img{
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  box-sizing: border-box;
+  opacity: 0.8;
+  
+}
+
+.empleados img{
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.clientes h2{
+  position: absolute;
+  top: 120px;
+  left: 13px;
+  font-size: 20px;
+  color: #ffffff;
+}
+  
+
+.empleados h2{
+  position: absolute;
+  font-size: 20px;
+  bottom: 8px;
+  font-size: 20px;
+  color: #ffffff;
+  left: 13px;
+}
+
+  
