@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './modules/home/pages/home-page/home-page.component';
-import { CartaPageComponent } from './modules/products/pages/carta-page/carta-page.component';
+import { AuthPageComponent } from './modules/auth/pages/auth-page/auth-page.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: HomePageComponent,
     loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
-  }, {
-    path: 'carta',
-    loadChildren: () => import('./modules/products/products.module').then(m => m.ProductsModule)
   },{
     path: 'auth',
+    component: AuthPageComponent,
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
   }
 ];

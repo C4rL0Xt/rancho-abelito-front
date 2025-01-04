@@ -1,24 +1,19 @@
-<div class="overlay">
-    <div class="boton">
-        <button class="close-button" (click)="closeDialog()">X</button>
+<div class="container">
+    <div class="image-bg-container">
+        <img class="image-bg" src="https://github.com/C4rL0Xt/images_repo/blob/master/images/abelito1.png?raw=true">
     </div>
-    <div class="palabras">
-        <h2>INGRESA A</h2>
-        <h1>EL RANCHO DE ABELITO</h1>
-    </div>
-    <div class="type">
-        <!--div class="card">
-            <img src="https://github.com/C4rL0Xt/images_repo/blob/master/images/mesero.jpg?raw=true"/>
-            <button>INICIAR SESION CON CORREO</button>
+    <div class="box-content">
+        <div [ngClass]="{'form-container': valorCompartido, 'form-container-register': !valorCompartido}">
+            <div *ngIf="valorCompartido">
+                <app-login-form (cambioValor)="actualizarValor($event)"></app-login-form>
+            </div>
+
+            <div *ngIf="!valorCompartido">
+                <app-register-form (cambioValor)="actualizarValor($event)" ></app-register-form>
+            </div>        
         </div>
-        <div class="card">
-            <img src="https://github.com/C4rL0Xt/images_repo/blob/master/images/clientes.jpg?raw=true">
-            <button>INICIAR SESION CON GOOGLE</button>
-        </div-->
-        <button class="button-email">INICIAR SESION CON CORREO</button>
-        <button class="button-google">INICIAR SESION CON GOOGLE</button>
-        <p class="info-login"> letras </p>
-        <button class="button-register">REGISTRARSE</button>
+        <div [ngClass]="{'image-container': valorCompartido, 'image-container-register': !valorCompartido}">
+            <img class="image" src="https://github.com/C4rL0Xt/images_repo/blob/master/images/abelito1.png?raw=true" id="abelito">
+        </div>
     </div>
-    
 </div>
