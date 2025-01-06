@@ -6,8 +6,10 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    row-gap: 15px;
+    row-gap: 10px;
     animation: fadeInUp 0.8s ease forwards;
+
+    border: 1px solid #787676;
 }
 
 .title-login {
@@ -15,12 +17,21 @@
     text-align: left;
     font-family: 'Ysabeau Infant', serif;
     font-weight: 400;
+
+    border: 1px solid beige;
 }
 
 .msg-login {
     font-size: 0.9rem;
     text-align: left;
     color: #666;
+
+    border: 1px solid firebrick;
+}
+
+.mensaje-error {
+    color: red;
+    font-size: 0.9rem;
 }
 
 .forms {

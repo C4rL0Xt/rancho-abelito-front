@@ -1,12 +1,13 @@
 <div class="container">
-    <h1 class="title-login">Iniciar Sesión</h1>
+    <div class="title-login">Iniciar Sesión</div>
     <p class="msg-login">Por favor, ingrese sus datos:</p>
-    <form action="" class="forms">
-        <input type="text" placeholder="Correo" class="input-field">
-        <input type="password" placeholder="Contraseña" class="input-field">
+    <div class="mensaje-error" *ngIf="mensajeError.length > 0">{{mensajeError}} !!</div>
+    <form [formGroup]="loginForm" class="forms" (ngSubmit)="onSumit(loginForm.value)">
+        <input type="email" placeholder="Correo" class="input-field" formControlName="email">
+        <input type="password" placeholder="Contraseña" class="input-field" formControlName="password">
+        <button class="pass-forged">Olvidé mi contraseña</button>
+        <button class="login">Iniciar Sesión</button>
     </form>
-    <button class="pass-forged">Olvidé mi contraseña</button>
-    <button class="login">Iniciar Sesión</button>
     <div class="opts-login">
         <button class="social-button">Google</button>
         <button class="social-button">Facebook</button>

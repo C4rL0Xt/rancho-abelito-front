@@ -1,21 +1,21 @@
 <div class="form-container">
     <h1>Registrarme</h1>
     <p>Por favor, ingrese la siguiente información</p>
-    <form>
+    <form [formGroup]="registerForm"  (ngSubmit)="onSubmit(registerForm.value)">
       <div class="form-group">
-        <input type="text" placeholder="Nombres" required />
-        <input type="text" placeholder="Apellidos" required />
+        <input type="text" placeholder="Nombres" formControlName="nombre"  required />
+        <input type="text" placeholder="Apellidos" formControlName="apellido" required />
       </div>
       <div class="form-group">
-        <input type="email" placeholder="Correo Electrónico" required />
+        <input type="email" placeholder="Correo Electrónico" formControlName="email" required />
       </div>
       <div class="form-group">
-        <input type="date" placeholder="Fecha nacimiento" required />
-        <input type="text" placeholder="Documento" required />
-        <input type="tel" placeholder="Nro. telefónico" required />
+        <input type="date" placeholder="Fecha nacimiento" formControlName="fechaNacimiento" required />
+        <input type="text" placeholder="Documento" formControlName="documento" required />
+        <input type="tel" placeholder="Nro. telefónico" formControlName="telefono" required />
       </div>
       <div class="form-group">
-        <input type="password" placeholder="Contraseña" required />
+        <input type="password" placeholder="Contraseña" formControlName="password" required />
         <input type="password" placeholder="Verificar contraseña" required />
       </div>
       <div class="form-check" class="form-check2">
