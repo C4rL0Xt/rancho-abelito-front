@@ -1,6 +1,6 @@
-
 .container {
-  width: 100vw;
+  max-width: 100vw;
+  width: 100%;
   height: 100%;
   background: linear-gradient(120deg, #e7d38c, #f5e6cc, #ddc593);
   display: flex;
@@ -91,6 +91,184 @@
   width: 57%;
   height: 100%;
   transition: all 1s ease;
+
+}
+
+@media (max-width: 1400px) {
+
+}
+
+@media (max-width: 1200px) {
+
+  .image-bg-container {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    left: 0px;
+    top: 102px;
+    z-index: 1;
+    filter: blur(5px) brightness(0.7);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .box-content {
+
+
+    width: 85%;
+    height: 90%;
+    padding: 10px;
+
+    /*border: 1px blue solid;*/
+  }
+
+  .image-container {
+    width: 50%;
+  }
+
+  .form-container {
+
+    width: 50%;
+    height: 100%;
+
+
+
+    /*border: 1px red solid;*/
+
+  }
+  
+
+  .image-container-register {
+    width: 50%;
+  }
+
+  .form-container-register {
+
+    width: 50%;
+    height: 100%;
+  }
+
+
+}
+
+@media (max-width: 835px) {
+
+
+
+  .image-bg-container {
+    display: none;
+  }
+
+  .box-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 85%;
+    height: 90%;
+    padding: 10px;
+
+    /*border: 1px blue solid;*/
+  }
+
+  .image-container {
+    display: none;
+  }
+
+  .form-container {
+
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+    /*border: 1px red solid;*/
+    order: 1;
+  }
+  
+
+  .image-container-register {
+    display: none;
+  }
+
+  .form-container-register {
+
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    order: 1;
+    border: 1px red solid;
+
+  }
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+
+}
+
+
+@media (max-width: 480px) {
+
+  .image-bg-container {
+    display: none;
+  }
+
+  .box-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 85%;
+    height: 90%;
+    padding: 10px;
+
+    /*border: 1px blue solid;*/
+  }
+
+  .image-container {
+    display: none;
+  }
+
+  .form-container {
+
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+    /*border: 1px red solid;*/
+    order: 1;
+  }
+  
+
+  .image-container-register {
+    display: none;
+  }
+
+  .form-container-register {
+
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    order: 1;
+    border: 1px red solid;
+
+  }
 
 }
 

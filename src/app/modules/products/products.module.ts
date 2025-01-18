@@ -1,23 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import { ProductsRoutingModule } from './products-routing.module';
 import { CartaPageComponent } from './pages/carta-page/carta-page.component';
 
 import { CardTypeComponent } from './components/card-type/card-type.component';
 import { SharedModule } from "../../shared/shared.module";
+import { CategoriaPageComponent } from './pages/categoria-page/categoria-page.component';
+import { CardProductComponent } from './components/card-product/card-product.component';
 
 
 @NgModule({
   declarations: [
     CartaPageComponent,
 
-    CardTypeComponent
+    CardTypeComponent,
+      CategoriaPageComponent,
+      CardProductComponent
   ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
 ]
 })
 export class ProductsModule { }

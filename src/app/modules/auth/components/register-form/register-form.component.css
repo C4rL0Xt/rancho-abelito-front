@@ -3,6 +3,8 @@
     padding: 30px;
     padding-top: 1px;
     padding-bottom: 8px;
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
 } 
   
@@ -126,6 +128,29 @@ button:hover {
 .login-link a:hover {
     text-decoration: underline;
 }
+
+
+
+@media (max-width: 480px) {
+    
+    .form-group{
+        display: flex;
+        flex-direction: column;
+ 
+    }
+
+    .formsp{
+        max-height: 570px;
+        overflow-y: scroll;
+    }
+
+    button{
+        width: 56%;
+    }
+    
+}
+
+
 
 
 

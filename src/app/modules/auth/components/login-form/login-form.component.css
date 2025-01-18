@@ -9,7 +9,7 @@
     row-gap: 10px;
     animation: fadeInUp 0.8s ease forwards;
 
-    border: 1px solid #787676;
+    /*border: 1px black solid;*/
 }
 
 .title-login {
@@ -17,16 +17,12 @@
     text-align: left;
     font-family: 'Ysabeau Infant', serif;
     font-weight: 400;
-
-    border: 1px solid beige;
 }
 
 .msg-login {
     font-size: 0.9rem;
     text-align: left;
     color: #666;
-
-    border: 1px solid firebrick;
 }
 
 .mensaje-error {
@@ -125,4 +121,35 @@
 
 .register-link:hover {
     color: #787676;
+}
+
+ 
+@media (max-width: 1400px) {
+
+}
+
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 834px) {
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 30px;
+    }
+
+    .to-register {
+        font-size: 0.75rem;
+    }
+
+    .register-link {
+        font-size: 0.9rem;
+    }
 }

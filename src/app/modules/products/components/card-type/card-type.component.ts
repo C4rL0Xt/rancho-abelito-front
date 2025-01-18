@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { SubCategoria } from '../../../../core/models/type.model';
+import { Categoria } from '../../../../core/models/type.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-type',
@@ -8,9 +9,12 @@ import { SubCategoria } from '../../../../core/models/type.model';
 })
 export class CardTypeComponent {
 
-  @Input() subCategoria!: SubCategoria;
+  @Input() categoria!: Categoria;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-
+  goToCategoria(idCategoria: number): void {
+    console.log('Navegando a categoria con id:', idCategoria);
+    this.router.navigate(['/carta/categoria', idCategoria]);
+  }
 }

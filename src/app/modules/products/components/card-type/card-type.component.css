@@ -75,7 +75,7 @@
     text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombras para mejorar legibilidad */
 }
 
-/* Responsividad mejorada */
+
 @media (max-width: 1400px) {
     .card-container {
         width: 200px;

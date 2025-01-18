@@ -1,0 +1,15 @@
+<div class="product-card">
+    <div class="image-container">
+      <img [src]="producto.imageUrl" [alt]="producto.nombre" class="product-image" />
+    </div>
+    <div class="product-info">
+      <div class="product-info-title">{{ producto.nombre }}</div>
+      <div class="product-info-description">{{ producto.descripcion }}</div>
+      <div class="action-container">
+        <div class="product-info-price">S/. {{ producto.precio | number: '1.2-2' }}</div>
+        <button class="button">
+            <img src="https://github.com/C4rL0Xt/images_repo/blob/master/images/carroicon.png?raw=true">
+        </button>
+      </div>
+    </div>
+  </div>

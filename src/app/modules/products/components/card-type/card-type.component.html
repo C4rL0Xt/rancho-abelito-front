@@ -1,8 +1,8 @@
-<div class="card-container">
-    <div class="image-section">
-        <img src="{{subCategoria.imageUrl}}" alt="{{subCategoria.nombre}}" class="image">
+<div class="card-container" (click)="goToCategoria(categoria.idCategoria)">
+    <div class="image-section" style="pointer-events: none;">
+        <img src="{{categoria.imageUrl}}" alt="{{categoria.nombre}}" class="image">
         <div class="data-section">
-            <h2 class="data-section-title">{{subCategoria.nombre}}</h2>
+            <h2 class="data-section-title">{{categoria.nombre}}</h2>
         </div>
     </div>
 </div>

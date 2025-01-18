@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="titulo">
+    <div class="categoria">
+      <h1>{{ categoria.nombre }}</h1>
+    </div>
+    <div class="raya">
+    </div>
+    <div class="tab-bar">
+      <button *ngFor="let subcategoria of subcategorias; let i = index" class="tab-button"
+        [class.active]="activeTab === i" (click)="selectTab(i)">
+        {{subcategoria.nombre}}
+      </button>
+    </div>
+  </div>
+  <div class="tab-content">
+
+    <div class="search-container">
+
+      <div class="search">
+        <form action="" class="search-form">
+          <input type="text" placeholder="Buscar por producto">
+          <div class="btnLupa">
+            <img src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/search.png?raw=true">
+          </div>
+        </form>
+      </div>
+
+      <div class="search-result">
+        Resultados ...
+      </div>
+    </div>
+
+    <div class="vista-container">
+
+      <aside class="filtro-container">
+
+        <div class="filtro" *ngFor="let filtro of filtros">
+          <button class="filtro-titulo" (click)="toggleFiltro(filtro.id)">
+            {{ filtro.titulo }}
+            <span [class.rotado]="filtro.expanded">▲</span>
+          </button>
+          <ul *ngIf="filtro.expanded" class="filtro-opciones">
+            <li *ngFor="let opcion of filtro.opciones" (click)="onSeleccionarOpcion(filtro.id, opcion)"
+              [class.seleccionado]="opcion.seleccionado" class="filtro-opcion">
+              {{ opcion.titulo }}
+            </li>
+            <ng-container *ngIf="filtro.id === 'precio'">
+              <div class="filtro-precio-inputs">
+                <input type="number" [(ngModel)]="precioMinimo" placeholder="Mínimo" />
+                <span> - </span>
+                <input type="number" [(ngModel)]="precioMaximo" placeholder="Máximo" />
+                <button class="confirmar-precio-btn" (click)="aplicarRangoPrecio(filtro.id)"
+                  [disabled]="!precioMinimo || !precioMaximo || precioMinimo > precioMaximo">
+                  ➤
+                </button>
+              </div>
+            </ng-container>
+          </ul>
+        </div>
+
+      </aside>
+
+      <div class="productos-container">
+        <app-card-product *ngFor="let producto of productos" [producto]="producto">
+        </app-card-product>
+      </div>
+    </div>
+
+  </div>
+</div>
