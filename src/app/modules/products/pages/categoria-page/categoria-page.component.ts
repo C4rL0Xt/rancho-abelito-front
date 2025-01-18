@@ -98,11 +98,8 @@ export class CategoriaPageComponent implements OnInit{
 
 
 
-
-  precioMinimo: number | null = null;
+precioMinimo: number | null = null;
 precioMaximo: number | null = null;
-
-
 
 
 aplicarRangoPrecio(filtroId: string): void {
