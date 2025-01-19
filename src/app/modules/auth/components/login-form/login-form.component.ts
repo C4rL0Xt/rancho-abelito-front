@@ -2,6 +2,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { LoginRequest } from '../../../../core/models/loginRequest.model';
+import { TokenService } from '../../services/token-service/token.service';
+import { UserService } from '../../../../shared/services/user-service/user.service';
 
 @Component({
   selector: 'app-login-form',
@@ -18,7 +20,9 @@ export class LoginFormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private tokenService: TokenService,
+    private userService: UserService
   ) {
     this.loginForm = this.formBuilder.group({
       email: '',
@@ -38,7 +42,7 @@ export class LoginFormComponent {
     this.authService.login(loginData).subscribe(
       (response) => {
         console.log('Respuesta del servidor', response);
-        localStorage.setItem('token', response.jwtToken);
+        this.tokenService.almacenarToken(response.jwtToken);
         window.location.href = '/';
       },
       (error) => {

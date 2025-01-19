@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../../../../shared/services/user-service/user.service';
 
 @Component({
   selector: 'app-home-page',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
+
+  username: string = '';
+
+  constructor(
+    private userService: UserService
+  ) { 
+
+    this.username = localStorage.getItem('username') || '';
+  }
+
+
+
 
 }

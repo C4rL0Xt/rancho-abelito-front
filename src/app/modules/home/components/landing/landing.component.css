@@ -3,9 +3,8 @@
     display: flex;
     width: 100%;
     width: 100vw; /* Ancho completo de la ventana */
-    height: calc(100vh - 82px);
+    height: calc(100vh - 90px);
     position: relative;
-    
 }
 
 .carousel button{

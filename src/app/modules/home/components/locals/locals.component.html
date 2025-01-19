@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="title-container">
+      <p class="title">Nuestros Locales</p>
+    </div>
+    <div class="locals">
+      <div *ngFor="let local of locales">
+        <app-locals-card [local]="local"></app-locals-card>
+      </div>
+    </div>
+  </div>
+  
