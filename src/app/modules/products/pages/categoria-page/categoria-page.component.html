@@ -15,10 +15,18 @@
   <div class="tab-content">
 
     <div class="search-container">
-
+      <div class="menu-container">
+        <div class="menu-filtros">
+          <button class="menu-toggle" (click)="menuFiltros()">
+            <img src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/menu-toggle.png?raw=true" alt="Logo" />
+          </button>
+          Aplicar filtros
+        </div>
+      </div>
       <div class="search">
         <form action="" class="search-form">
-          <input type="text" placeholder="Buscar por producto">
+          <input type="text" placeholder="Buscar por producto" [(ngModel)]="busquedaNombre" name="busquedaNombre"
+            (input)="aplicarFiltroBusqueda()">
           <div class="btnLupa">
             <img src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/search.png?raw=true">
           </div>
@@ -26,14 +34,23 @@
       </div>
 
       <div class="search-result">
-        Resultados ...
+        {{totalResultados}} Resultados
+        <div class="filtros-aplicados">
+          <ng-container *ngFor="let filtro of filtrosAplicados">
+            <div *ngIf="filtro.tipo !== 'nombre'" class="filtro-etiqueta">
+              {{ filtro.nombre }}
+              <button (click)="eliminarFiltro(filtro)">X</button>
+            </div>
+          </ng-container>
+        </div>
       </div>
     </div>
 
     <div class="vista-container">
-
-      <aside class="filtro-container">
-
+      <aside class="filtro-container" [class.active]="openFiltros">
+        <div class="cerrar-filtros" [class.active]="openFiltros" (click)="menuFiltros()">
+          <button>X</button>
+        </div>
         <div class="filtro" *ngFor="let filtro of filtros">
           <button class="filtro-titulo" (click)="toggleFiltro(filtro.id)">
             {{ filtro.titulo }}
@@ -49,7 +66,7 @@
                 <input type="number" [(ngModel)]="precioMinimo" placeholder="Mínimo" />
                 <span> - </span>
                 <input type="number" [(ngModel)]="precioMaximo" placeholder="Máximo" />
-                <button class="confirmar-precio-btn" (click)="aplicarRangoPrecio(filtro.id)"
+                <button class="confirmar-precio-btn" (click)="aplicarFiltroPrecio()"
                   [disabled]="!precioMinimo || !precioMaximo || precioMinimo > precioMaximo">
                   ➤
                 </button>
@@ -57,14 +74,11 @@
             </ng-container>
           </ul>
         </div>
-
       </aside>
-
       <div class="productos-container">
-        <app-card-product *ngFor="let producto of productos" [producto]="producto">
+        <app-card-product *ngFor="let producto of productosFiltrados" [producto]="producto">
         </app-card-product>
       </div>
     </div>
-
   </div>
 </div>

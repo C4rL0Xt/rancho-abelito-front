@@ -40,8 +40,22 @@
     align-items: center;
     cursor: pointer;
     max-height: 100%;
+    column-gap: 10px;
     position: relative;
     color: #000000;
+}
+
+.username {
+    font-size: 1.1rem;
+}
+
+.nav-option-user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    max-height: 100%;
+    column-gap: 10px;
+    position: relative;
 }
 
 .nav-option a {
@@ -72,6 +86,21 @@
 
 .button:active{
     background-color: #19690f;
+}
+
+.nav-option-logout {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    max-height: 100%;
+    column-gap: 10px;
+    position: relative;
+}
+
+.logout-button {
+    background: none;
+    color: black;
+    border: none;
 }
 
 .menu-toggle {
@@ -162,7 +191,6 @@
     left: 0;
     width: 0;
     height: 2px;
-    
     background: #219311;
     transition: width 0.4s ease;
 }

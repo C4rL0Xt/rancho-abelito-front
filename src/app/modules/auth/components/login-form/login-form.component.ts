@@ -43,6 +43,7 @@ export class LoginFormComponent {
       (response) => {
         console.log('Respuesta del servidor', response);
         this.tokenService.almacenarToken(response.jwtToken);
+        this.userService.setUsername(response.username)
         window.location.href = '/';
       },
       (error) => {

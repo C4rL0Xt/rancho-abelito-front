@@ -10,35 +10,35 @@ export class CategoriaService {
     {
       idProducto: 1,
       idSubcategoria: 1,
-      nombre: "Ceviche de Pescado",
+      nombre: "Arroz con Pollo",
       descripcion: "Pescado fresco marinado en jugo de limón con cebolla, ají y culantro.",
-      precio: 35,
+      precio: 15,
       imageUrl: "https://github.com/C4rL0Xt/images_repo/blob/master/productos/ceviche_pescado.jpg?raw=true"
     },{
       idProducto: 2,
       idSubcategoria: 1,
       nombre: "Causa Limeña",
       descripcion: "Capa de puré de papa amarilla con pollo, atún o mariscos, servida con palta y mayonesa.",
-      precio: 25,
+      precio: 55,
       imageUrl: "https://github.com/C4rL0Xt/images_repo/blob/master/productos/causa_limeña.jpg?raw=true"
     },{
       idProducto: 3,
       idSubcategoria: 1,
-      nombre: "Causa Limeña",
+      nombre: "Bar",
       descripcion: "Capa de puré de papa amarilla con pollo, atún o mariscos, servida con palta y mayonesa.",
-      precio: 25,
+      precio: 10,
       imageUrl: "https://github.com/C4rL0Xt/images_repo/blob/master/productos/causa_limeña.jpg?raw=true"
     },{
       idProducto: 4,
       idSubcategoria: 1,
-      nombre: "Causa Limeña",
+      nombre: "Aea",
       descripcion: "Capa de puré de papa amarilla con pollo, atún o mariscos, servida con palta y mayonesa.",
       precio: 25,
       imageUrl: "https://github.com/C4rL0Xt/images_repo/blob/master/productos/causa_limeña.jpg?raw=true"
     },{
       idProducto: 5,
       idSubcategoria: 1,
-      nombre: "Causa Limeña",
+      nombre: "ZZZ",
       descripcion: "Capa de puré de papa amarilla con pollo, atún o mariscos, servida con palta y mayonesa.",
       precio: 25,
       imageUrl: "https://github.com/C4rL0Xt/images_repo/blob/master/productos/causa_limeña.jpg?raw=true"

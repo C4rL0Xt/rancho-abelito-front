@@ -4,6 +4,7 @@
   width: 400px;
   height: 170px;
   border: 1px solid #ccc;
+  background-color: rgb(255, 255, 255);
   border-radius: 8px;
   margin: 10px;
 }
@@ -74,3 +75,26 @@
     object-fit: contains;
 
 }
+
+@media (max-width: 768px) {
+  .product-card {
+    width: calc(100vw - 30px);
+    max-width: 100%;
+    margin: 10px 10px auto;
+    height: 150px;
+  }
+
+  .image-container {
+    width: 40%;
+   
+  }
+
+  .product-info {
+    width: 60%;
+  }
+}
+
+
+
+
+

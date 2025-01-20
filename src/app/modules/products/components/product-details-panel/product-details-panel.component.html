@@ -1,0 +1,29 @@
+<div class="details-panel-backdrop" (click)="closePanel()"></div>
+<div class="details-panel">
+    <button class="close-btn" (click)="closePanel()">✖</button>
+    <div class="panel-content">
+        <div class="image-container">
+            <img [src]="producto?.imageUrl" [alt]="producto?.nombre" />
+        </div>
+
+        <div class="info-container">
+            <div class="p">
+                <div class="product-price">S/{{ producto?.precio | number: '1.2-2' }}</div>
+                <div class="product-title">{{ producto?.nombre }}</div>
+                <div class="product-description">{{ producto?.descripcion }}</div>
+                <label>
+                    Indique las características adicionales del plato (opcional):
+                    <textarea [(ngModel)]="adicionales"></textarea>
+                </label>
+            </div>
+            <div class="quantity-and-add">
+                <div class="quantity-container">
+                    <button (click)="decrementarCantidad()">-</button>
+                    <span>{{ cantidad }}</span>
+                    <button (click)="incrementarCantidad()">+</button>
+                </div>
+                <button class="add-to-cart-btn" (click)="agregarCarrito()">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>

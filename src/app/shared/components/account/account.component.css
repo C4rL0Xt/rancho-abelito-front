@@ -3,7 +3,7 @@
     top: 40%; 
     right: 0px; 
     transform: translateY(-50%);
-    background-color: #57e642;
+    background-color: #e7be7d;
     color: white; 
     padding: 10px 20px;
     border-top-left-radius: 10px;
@@ -26,12 +26,18 @@
     row-gap: 10px;
 }
 
-.content img {
+.material-icons {
+    font-size: 40px; /* Cambia el tamaño */
+    color: #890c0c;  /* Cambia el color */
+  }
+/*
+.content {
     max-height: 40px;
     height: 40px;
     max-width: 40px;
     width: 40px;
-}
+    color: #890c0c;
+}*/
 
 .content a {
     font-size: 17px;

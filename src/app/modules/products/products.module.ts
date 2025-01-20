@@ -8,6 +8,7 @@ import { CardTypeComponent } from './components/card-type/card-type.component';
 import { SharedModule } from "../../shared/shared.module";
 import { CategoriaPageComponent } from './pages/categoria-page/categoria-page.component';
 import { CardProductComponent } from './components/card-product/card-product.component';
+import { ProductDetailsPanelComponent } from './components/product-details-panel/product-details-panel.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CardProductComponent } from './components/card-product/card-product.com
 
     CardTypeComponent,
       CategoriaPageComponent,
-      CardProductComponent
+      CardProductComponent,
+      ProductDetailsPanelComponent
   ],
   imports: [
     CommonModule,

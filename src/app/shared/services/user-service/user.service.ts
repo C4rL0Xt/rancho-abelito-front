@@ -17,7 +17,12 @@ export class UserService {
     localStorage.setItem('username', username);
   }
 
+  getUsername(): string {
+    return localStorage.getItem('username') || '';
+  }
+
   clearUsername(): void {
     this.usernameSubject.next(null);
+    
   }
 }

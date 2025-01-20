@@ -1,10 +1,8 @@
 <div class="static-button" routerLink="/auth">
     <div class="content">
-        <img src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/user.png?raw=true" />
-        <a *ngIf="userService.username$ | async as username; else defaultState" >{{ username}}</a>
+        <span class="material-icons">shopping_cart</span>
+        <a >Mi orden</a>
     </div>
 </div>
 
-<ng-template #defaultState>
-    Mi Cuenta
-  </ng-template>
+

@@ -3,7 +3,7 @@
         <div class="logo-section" routerLink="/">
             <img src="https://github.com/C4rL0Xt/images_repo/blob/master/logotipo/logo_cortado.png?raw=true"
                 alt="Logo" />
-        </div>
+        </div> 
         <nav class="nav">
             <div class="nav-option" routerLink="/carta/">
                 <a>La carta</a>
@@ -14,9 +14,20 @@
             <div class="nav-option">
                 <a>Promociones</a>
             </div>
-            <div class="nav-option">
-                <button class="button">
-                    Delivery
+            <div *ngIf="username == '' " class="nav-option" >
+                <button class="button" routerLink="/auth">
+                     Ingresa o Registraté
+                </button>
+            </div>
+            <div *ngIf="username != '' " class="nav-option-user">
+                <span class="material-icons">person</span>
+                <div class="username">
+                    {{username}}
+                </div>
+            </div>
+            <div *ngIf="username != '' " class="nav-option-logout">
+                <button class="logout-button" (click)="logout()">
+                    <span class="material-icons">logout</span>
                 </button>
             </div>
         </nav>
@@ -43,11 +54,12 @@
             <div class="nav-option2" routerLink="/carta/" (click)="toggleMenu()">
                 <a>Promociones</a>
             </div>
-            <div class="nav-option" (click)="toggleMenu()">
+            <div class="nav-option" (click)="toggleMenu()" >
                 <button class="button">
                     Delivery
                 </button>
             </div>
         </nav>
     </div>
+    
 </header>
