@@ -10,10 +10,16 @@ import { UserService } from '../../services/user-service/user.service';
 export class AccountComponent implements OnChanges {
 
   username: string | null = null;
+  mostrarCarrito = false;
   
   constructor(private router: Router,
     public userService: UserService
   ){
+  }
+
+  toggleCarrito() {
+    this.mostrarCarrito = !this.mostrarCarrito;
+    console.log('mostrarCarrito:', this.mostrarCarrito);  // Verificar el cambio
   }
 
   ngOnChanges(): void {

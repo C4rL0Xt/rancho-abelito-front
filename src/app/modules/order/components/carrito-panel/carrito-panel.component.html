@@ -1,0 +1,44 @@
+<div class="carrito-panel">
+  <div class="cerrar-eliminar-container">
+    <button class="close-btn" (click)="closePanel()">✖</button>
+    <button class="limpiar-carrito-btn" (click)="limpiarCarrito()">
+      <img src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/papeleraiconn.png?raw=true">
+    </button>
+  </div>
+  <h2>MI ORDEN</h2>
+  <ul *ngIf="productos.length > 0; else carritoVacio">
+      <li *ngFor="let producto of productos">
+        <img [src]='producto.producto.imagenUrl'>
+        <div class="info">
+          <p class="nombre">{{ producto.producto.nombre}}</p>
+          <p class="adicionales">{{ producto.adicionales }}</p>
+        </div>
+        <div class="acciones">
+          <p>{{producto.total | currency:'S/' }}</p>
+          <div class="dis-btn">
+            <div class="dis-au-btn">
+              <button (click)="disminuirCantidad(producto)">-</button>
+              <span>{{ producto.cantidad }}</span>
+              <button (click)="aumentarCantidad(producto)">+</button>
+            </div>
+            <div class="eliminar-btn">
+              <button (click)="eliminarProducto(producto)">
+                <span class="material-icons">delete_forever</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </li>
+  </ul>
+  <div class="subtotal">
+    Total: {{ calcularSubtotal() | currency:'S/' }}
+  </div>
+  <button class="continuar">Continuar</button>
+</div>
+
+<ng-template #carritoVacio>
+  <div class="empty-car">
+    <p>El carrito está vacío.</p>
+    <span class="material-icons">shopping_cart</span>
+  </div>
+</ng-template>

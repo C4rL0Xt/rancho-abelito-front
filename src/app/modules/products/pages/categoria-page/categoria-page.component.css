@@ -297,6 +297,7 @@ input[type="text"]:focus {
   background-color: #e4e4e4;
   margin-bottom: 10px;
   padding-top: 10px;
+  padding-left: 10px;
 }
 
 .menu-toggle img {

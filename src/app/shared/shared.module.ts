@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AccountComponent } from './components/account/account.component';
 import { RouterModule } from '@angular/router';
 import{AuthModule} from '../modules/auth/auth.module'
+import { OrderModule } from '../modules/order/order.module';
 
 
 
@@ -15,11 +16,12 @@ import{AuthModule} from '../modules/auth/auth.module'
   imports: [
     CommonModule,
     RouterModule,
-    AuthModule
+    AuthModule,
+    OrderModule
   ],
   exports: [
     HeaderComponent,
     AccountComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -28,33 +28,6 @@ export class CategoriaPageComponent implements OnInit {
   busquedaNombre: string = '';
   filtrosAplicados: { tipo: string; nombre: string; valor: any }[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private categoriaService: CategoriaService
-  ) { }
-
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.idCategoria = +params['idCategoria'];
-      const categoria = this.categoriaService.getCategoriaById(this.idCategoria);
-      if (categoria) {
-        this.categoria = categoria;
-      } else {
-        console.error('Categoría no encontrada para el ID:', this.idCategoria);
-      }
-      this.subcategorias = this.categoriaService.getSubcategoriasByCategoria(this.idCategoria);
-      if (this.subcategorias.length > 0) {
-        this.loadProductos(this.subcategorias[0].idSubcategoria);
-      }
-    });
-    this.productosFiltrados = [...this.productos];
-    this.totalResultados = this.productosFiltrados.length;
-  }
-
-  menuFiltros() {
-    this.openFiltros = !this.openFiltros;
-  }
-
   filtros = [
     {
       id: 'precio',
@@ -78,6 +51,45 @@ export class CategoriaPageComponent implements OnInit {
     }
   ];
 
+  constructor(
+    private route: ActivatedRoute,
+    private categoriaService: CategoriaService
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      
+      this.idCategoria = +params['idCategoria'];
+
+      this.categoriaService.getCategoriaById(this.idCategoria).subscribe({
+        next: (categoria: Categoria) => {
+          this.categoria = categoria;
+        },
+        error: (err) => {
+          console.error('Error al obtener categoria:', err);
+        }
+      });
+
+      this.categoriaService.getSubcategoriasByCategoria(this.idCategoria).subscribe({
+        next: (subcategorias: SubCategoria[]) => {
+          this.subcategorias = subcategorias;
+          if (this.subcategorias.length > 0) {
+            this.loadProductos(this.subcategorias[0].idSubcategoria);
+          }
+        },
+        error: (err) => {
+          console.error('Error al cargar subcategorías:', err);
+        }
+      });
+    });
+  
+    this.productosFiltrados = [...this.productos];
+    this.totalResultados = this.productosFiltrados.length;
+  }
+
+  menuFiltros() {
+    this.openFiltros = !this.openFiltros;
+  }
 
   selectTab(index: number): void {
     this.activeTab = index;
@@ -86,7 +98,15 @@ export class CategoriaPageComponent implements OnInit {
   }
 
   private loadProductos(idSubcategoria: number): void {
-    this.productos = this.categoriaService.getProductosBySubcategoria(idSubcategoria);
+    this.categoriaService.getProductosBySubcategoria(idSubcategoria).subscribe({
+      next: (productos: Producto[]) => {
+        this.productos = productos;
+        this.actualizarProductosFiltrados(); 
+      },
+      error: (err) => {
+        console.error('Error al cargar productos:', err);
+      }
+    });
   }
 
   toggleFiltro(id: string): void {
@@ -106,7 +126,6 @@ export class CategoriaPageComponent implements OnInit {
       }
       return filtro;
     });
-
     if (filtroId === 'ordenar') {
       this.ordenSeleccionado = opcion.id;
       this.aplicarFiltroOrden(opcion);
@@ -115,21 +134,17 @@ export class CategoriaPageComponent implements OnInit {
 
   agregarFiltro(tipo: string, nombre: string, valor: any): void {
     const filtroExistente = this.filtrosAplicados.find(filtro => filtro.tipo === tipo);
-  
     if (filtroExistente) {
       filtroExistente.nombre = nombre;
       filtroExistente.valor = valor;
     } else {
       this.filtrosAplicados.push({ tipo, nombre, valor });
     }
-  
     this.actualizarProductosFiltrados();
   }
 
   eliminarFiltro(filtro: { tipo: string; nombre: string; valor: any }): void {
     this.filtrosAplicados = this.filtrosAplicados.filter(f => f !== filtro);
-  
-    // Resetear el estado del filtro eliminado
     switch (filtro.tipo) {
       case 'nombre':
         this.busquedaNombre = '';
@@ -142,7 +157,6 @@ export class CategoriaPageComponent implements OnInit {
         this.ordenSeleccionado = null;
         break;
     }
-  
     this.actualizarProductosFiltrados();
   }
 

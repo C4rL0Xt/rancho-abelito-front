@@ -1,8 +1,8 @@
-<div class="static-button" routerLink="/auth">
-    <div class="content">
-        <span class="material-icons">shopping_cart</span>
-        <a >Mi orden</a>
-    </div>
+<div class="static-button" (click)="toggleCarrito()">
+  <div class="content">
+    <span class="material-icons">shopping_cart</span>
+    <a>Mi orden</a>
+  </div>
 </div>
 
-
+<app-carrito-panel *ngIf="mostrarCarrito" class="carrito" (cerrar)="toggleCarrito()"></app-carrito-panel>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="titulo">
     <div class="categoria">
-      <h1>{{ categoria.nombre }}</h1>
+      <h1 *ngIf="categoria">{{ categoria.nombre }}</h1>
     </div>
     <div class="raya">
     </div>
@@ -13,7 +13,6 @@
     </div>
   </div>
   <div class="tab-content">
-
     <div class="search-container">
       <div class="menu-container">
         <div class="menu-filtros">

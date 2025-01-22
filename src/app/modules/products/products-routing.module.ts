@@ -6,6 +6,7 @@ import { CategoriaPageComponent } from './pages/categoria-page/categoria-page.co
 const routes: Routes = [
   { path: '', component: CartaPageComponent },
   { path: 'categoria/:idCategoria', component: CategoriaPageComponent}
+  
 ];
 
 @NgModule({

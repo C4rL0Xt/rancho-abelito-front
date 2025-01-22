@@ -13,7 +13,14 @@ export class CartaPageComponent implements OnInit{
  
 
   constructor(private categoriaService: CategoriaService) {
-    this.types = this.categoriaService.getCategorias(); 
+    this.categoriaService.getCategorias().subscribe({
+      next: (categorias: Categoria[]) => {
+        this.types = categorias;
+      },
+      error: (err) => {
+        console.error('Error al cargar las categorias: ', err);
+      }
+    }); 
     console.log('CartaPageComponent created');
   }
 

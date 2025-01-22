@@ -6,9 +6,8 @@ export interface Categoria {
 
 export interface SubCategoria{
     idSubcategoria: number,
-    idCategoria: number,
     nombre: string,
-    imageUrl: string
+ 
 }
 
 export interface Producto{
@@ -17,5 +16,5 @@ export interface Producto{
     nombre: string,
     descripcion: string,
     precio: number,
-    imageUrl: string
+    imagenUrl: string
 }
