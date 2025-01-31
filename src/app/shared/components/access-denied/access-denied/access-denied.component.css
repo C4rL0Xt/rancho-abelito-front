@@ -1,0 +1,103 @@
+.access-denied-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #1a1a1a;
+    color: #ddd;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .access-denied-content {
+    text-align: center;
+    z-index: 10;
+  }
+  
+  .access-denied-content h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    color: #00A974;
+    position: relative;
+    animation: text-glow 2s infinite alternate;
+  }
+  
+  @keyframes text-glow {
+    0% {
+      text-shadow: 0 0 10px #012d23, 0 0 20px #012d23, 0 0 30px #036247, 0 0 40px #036247, 0 0 50px #00a974, 0 0 60px red, 0 0 70px red;
+    }
+  
+    100% {
+      text-shadow: 0 0 20px #012d23, 0 0 30px #012d23, 0 0 40px #036247, 0 0 50px #036247, 0 0 60px #00a974, 0 0 70px red, 0 0 80px red;
+    }
+  }
+  
+  .access-denied-content p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  .access-denied-content a {
+    text-decoration: none;
+    color: #ddd;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .access-denied-content a:hover {
+    background-color: #ddd;
+    color: #1a1a1a;
+  }
+  
+  .background-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  svg {
+    width: 30%;
+    height: auto;
+    fill: none;
+    stroke: red;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    animation: draw 5s infinite;
+  }
+  
+  .forbidden {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  @keyframes draw {
+    0% {
+      stroke-dasharray: 0, 100;
+      opacity: 0;
+    }
+  
+    50% {
+      stroke-dasharray: 50, 50;
+      opacity: 1;
+    }
+  
+    100% {
+      stroke-dasharray: 100, 0;
+      opacity: 0;
+    }
+  }

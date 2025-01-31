@@ -1,6 +1,7 @@
 import { CarritoDetail } from '../../../../core/models/carritoDetail.model';
-import { CarritoService } from './../../services/carritoService/carrito.service';
+
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CarritoServiceService } from '../../../order/services/Carrito/carrito-service.service';
 
 @Component({
   selector: 'app-product-details-panel',
@@ -15,7 +16,7 @@ export class ProductDetailsPanelComponent {
   cantidad: number = 1;
   adicionales: string = '';
 
-  constructor(private carritoService: CarritoService){}
+  constructor(private carritoService: CarritoServiceService){}
 
   closePanel() {
     this.cerrar.emit();

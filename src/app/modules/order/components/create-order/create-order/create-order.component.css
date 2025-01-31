@@ -1,0 +1,69 @@
+.create-container{
+    width: 100%;
+    height: 89%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #ECECEC;
+}
+
+.title-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.rutas a{
+    color: #838383;
+    font-size: 15px;
+}
+
+.pedido{
+    font-size: 22px; 
+}
+
+.fecha{
+    font-size: 15px;
+    color: #838383;
+}
+
+.paneles-container{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: 70%;
+    gap: 40px;
+    margin-left: 50px;
+    border: 3px  solid #b61212;
+}
+
+.panel-buscar{
+    width: 30%;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+}
+
+.panel-items-and-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 63%;
+    background-color: rgb(83, 175, 56);
+}
+
+.panel-items{
+    width: 100%;
+    height: 82%;
+    border-radius: 8px;
+    background-color: #ffffff;
+    border: 3px  solid #3a12b4;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+

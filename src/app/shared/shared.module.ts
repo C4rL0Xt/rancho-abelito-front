@@ -5,13 +5,15 @@ import { AccountComponent } from './components/account/account.component';
 import { RouterModule } from '@angular/router';
 import{AuthModule} from '../modules/auth/auth.module'
 import { OrderModule } from '../modules/order/order.module';
+import { AccessDeniedComponent } from './components/access-denied/access-denied/access-denied.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    AccountComponent
+    AccountComponent,
+    AccessDeniedComponent
   ],
   imports: [
     CommonModule,

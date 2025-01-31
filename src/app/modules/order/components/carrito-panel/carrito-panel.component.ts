@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CarritoService } from '../../../products/services/carritoService/carrito.service';
+import { CarritoServiceService } from '../../services/Carrito/carrito-service.service';
+import { CarritoDetail } from '../../../../core/models/carritoDetail.model';
+
 
 @Component({
   selector: 'app-carrito-panel',
@@ -7,20 +9,42 @@ import { CarritoService } from '../../../products/services/carritoService/carrit
   styleUrl: './carrito-panel.component.css'
 })
 export class CarritoPanelComponent implements OnInit{
-  productos: any[] = [];
+  productos: CarritoDetail[] = [];
   @Output() cerrar = new EventEmitter<void>();
 
-  constructor(private carritoService: CarritoService) {
-    this.productos = this.carritoService.obtenerProductos();
+  constructor(private carritoService: CarritoServiceService) {
+    this.loadCarrito();
+    console.log('ABRIENDO PANEL desde consctrctor');
+    //this.productos = this.carritoService.obtenerProductos();
+  }
+
+  loadCarrito() {
+    var idCarrito = Number(localStorage.getItem('idCarrito'));
+    var idCliente = localStorage.getItem('idCliente') || '';
+
+ 
+    this.carritoService.getDetalles(idCliente, idCarrito).subscribe(
+        (response) => {
+          console.log("Resultado de lista del carrito cliente" ,response);
+          this.productos = response;
+        }
+    )
+    
   }
 
   closePanel() {
     this.cerrar.emit();
+    this.carritoService.addListCarrito().subscribe(
+      (response) => {
+        console.log('Respuesta del servidor', response);
+      }
+    );
   }
 
   ngOnInit(): void {
-    this.productos= this.carritoService.obtenerProductos();
-    console.log('Products del carrito p: ', this.productos);
+    this.loadCarrito();
+    //this.productos= this.carritoService.obtenerProductos();
+    console.log('ABRIENDO PANEL desde ngonit');
   }
 
   eliminarProducto(producto: any) {

@@ -18,3 +18,8 @@ export interface Producto{
     precio: number,
     imagenUrl: string
 }
+
+export interface Opcion{
+    label: string,
+    route: string
+}

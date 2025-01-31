@@ -3,11 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { OrderRoutingModule } from './order-routing.module';
 import { CarritoPanelComponent } from './components/carrito-panel/carrito-panel.component';
+import { MeseroPageComponent } from './pages/mesero-page/mesero-page.component';
+import { MesaCardComponent } from './components/mesa-card/mesa-card.component';
+import { CreateOrderComponent } from './components/create-order/create-order/create-order.component';
+import { OrderPageComponent } from './pages/order-page/order-page/order-page.component';
 
 
 @NgModule({
   declarations: [
-    CarritoPanelComponent
+    CarritoPanelComponent,
+    MeseroPageComponent,
+    MesaCardComponent,
+    CreateOrderComponent,
+    OrderPageComponent
   ],
   imports: [
     CommonModule,

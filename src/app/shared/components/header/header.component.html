@@ -1,65 +1,64 @@
 <header class="header">
-    <div class="header-content">
-        <div class="logo-section" routerLink="/">
-            <img src="https://github.com/C4rL0Xt/images_repo/blob/master/logotipo/logo_cortado.png?raw=true"
-                alt="Logo" />
-        </div> 
-        <nav class="nav">
-            <div class="nav-option" routerLink="/carta/">
-                <a>La carta</a>
-            </div>
-            <div class="nav-option">
-                <a>Menus</a>
-            </div>
-            <div class="nav-option">
-                <a>Promociones</a>
-            </div>
-            <div *ngIf="username == '' " class="nav-option" >
-                <button class="button" routerLink="/auth">
-                     Ingresa o Registraté
-                </button>
-            </div>
-            <div *ngIf="username != '' " class="nav-option-user">
-                <span class="material-icons">person</span>
-                <div class="username">
-                    {{username}}
-                </div>
-            </div>
-            <div *ngIf="username != '' " class="nav-option-logout">
-                <button class="logout-button" (click)="logout()">
-                    <span class="material-icons">logout</span>
-                </button>
-            </div>
-        </nav>
-        <button class="menu-toggle" (click)="toggleMenu()">
-            <img src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/menu-toggle.png?raw=true" alt="Logo" />
-        </button>
+  <div class="header-content">
+    <div class="logo-section" routerLink="/">
+      <img
+        src="https://github.com/C4rL0Xt/images_repo/blob/master/logotipo/logo_cortado.png?raw=true"
+        alt="Logo"
+      />
     </div>
-
-    <div class="menu-options" [class.active]="menuOpen">
-        <button class="close-menu" (click)="toggleMenu()">
-            <img src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/cerrar_icon2.png?raw=true" alt="Logo" />
-        </button>
-        <div class="menu-icon">
-            <img src="https://github.com/C4rL0Xt/images_repo/blob/master/logotipo/logo_cortado.png?raw=true"
-                alt="Logo" />
+    <nav class="nav">
+      <div *ngFor="let opcion of opciones" class="nav-option" [routerLink]="opcion.route">     
+            <a>{{opcion.label}}</a>   
+      </div>
+      <div *ngIf="username == ''" class="nav-option">
+        <button class="button" routerLink="/auth">Ingresa o Registraté</button>
+      </div>
+      <div *ngIf="username != ''" class="nav-option-user">
+        <span class="material-icons">person</span>
+        <div class="username">
+          {{ username }}
         </div>
-        <nav class="opciones-toggle">
-            <div class="nav-option2" (click)="toggleMenu()">
-                <a>La carta</a>
-            </div>
-            <div class="nav-option2" (click)="toggleMenu()">
-                <a>Menus</a>
-            </div>
-            <div class="nav-option2" routerLink="/carta/" (click)="toggleMenu()">
-                <a>Promociones</a>
-            </div>
-            <div class="nav-option" (click)="toggleMenu()" >
-                <button class="button">
-                    Delivery
-                </button>
-            </div>
-        </nav>
+      </div>
+      <div *ngIf="username != ''" class="nav-option-logout">
+        <button class="logout-button" (click)="logout()">
+          <span class="material-icons">logout</span>
+        </button>
+      </div>
+    </nav>
+    <button class="menu-toggle" (click)="toggleMenu()">
+      <img
+        src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/menu-toggle.png?raw=true"
+        alt="Logo"
+      />
+    </button>
+  </div>
+
+  <div class="menu-options" [class.active]="menuOpen">
+    <button class="close-menu" (click)="toggleMenu()">
+      <img
+        src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/cerrar_icon2.png?raw=true"
+        alt="Logo"
+      />
+    </button>
+    <div class="menu-icon">
+      <img
+        src="https://github.com/C4rL0Xt/images_repo/blob/master/logotipo/logo_cortado.png?raw=true"
+        alt="Logo"
+      />
     </div>
-    
+    <nav class="opciones-toggle">
+      <div class="nav-option2" (click)="toggleMenu()">
+        <a>La carta</a>
+      </div>
+      <div class="nav-option2" (click)="toggleMenu()">
+        <a>Menus</a>
+      </div>
+      <div class="nav-option2" routerLink="/carta/" (click)="toggleMenu()">
+        <a>Promociones</a>
+      </div>
+      <div class="nav-option" (click)="toggleMenu()">
+        <button class="button">Delivery</button>
+      </div>
+    </nav>
+  </div>
 </header>

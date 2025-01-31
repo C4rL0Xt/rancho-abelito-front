@@ -7,14 +7,12 @@ import { UserService } from '../../../../shared/services/user-service/user.servi
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
-
-  username: string = '';
-
+  roleUser: string = '';
   constructor(
-    private userService: UserService
-  ) { 
 
-    this.username = localStorage.getItem('username') || '';
+  ) { 
+    this.roleUser = localStorage.getItem('rol') || '';
+
   }
 
 

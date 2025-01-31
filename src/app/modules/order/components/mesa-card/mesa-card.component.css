@@ -1,0 +1,95 @@
+.card-container{
+    width: 400px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #FFCACA;
+
+}
+
+.card-container.activo{
+    border: 2px solid #d91d1d;
+    background-color: #FFCACA;
+}
+
+.card-container.inactivo{
+    border: 2px solid #60F05B;
+    background-color: #e1ffe0;;
+}
+
+.cabecera-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+
+.num-mesa{
+    font-size: 1.5rem;
+}
+
+
+.options-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+
+.estado-container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 9px;
+    align-items: center;
+}
+
+.estado-container img {
+    width: 30px;
+}
+
+.options-container button {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 175px;
+    height: 35px;
+    background-color: #60F05B;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    
+}
+
+@media (max-width: 900px) {
+    .card-container{
+        width: 350px;
+        height: 150px;
+    
+    }
+}
+
+@media (max-width: 820px) {
+    .card-container{
+        width: 300px;
+        height: 150px;
+    
+    }
+
+    .options-container button {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 150px;
+        height: 35px;
+        background-color: #60F05B;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 0.8rem;
+        
+    }
+}

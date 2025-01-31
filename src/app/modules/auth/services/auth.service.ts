@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/enviroments';
 import { HttpClient } from '@angular/common/http';
 import { LoginRequest } from '../../../core/models/loginRequest.model';
-import { Observable } from 'rxjs';
 import { LoginResponse } from '../../../core/models/loginResponse.model';
 import { SignUpRequest } from '../../../core/models/signUpRequest.model';
+import { catchError, map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,6 @@ export class AuthService {
   ) { 
     
   }
-
 
   login(request: LoginRequest): Observable<LoginResponse> {
     return this.httpClient.post<LoginResponse>(this.LOGIN_URL, request);

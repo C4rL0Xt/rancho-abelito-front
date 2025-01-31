@@ -14,43 +14,6 @@ export class CategoriaService {
   }
   private readonly URL = environment.api_producto;
 
- 
-
-
-
-
-
-  private categorias: Categoria[] = [
-    {
-      idCategoria: 1,
-      nombre: 'Entradas',
-      imageUrl: 'https://s1.elespanol.com/2019/03/04/ciencia/nutricion/nutricion_380722770_117009517_1706x1280.jpg'
-    },
-    {
-      idCategoria: 2,
-      nombre: 'Platos de Fondo',
-      imageUrl: 'https://www.paulinacocina.net/wp-content/uploads/2020/01/tacos-meat-food-mexican-lunch-dinner.jpg'
-    }, {
-      idCategoria: 3,
-      nombre: 'Bebidas',
-      imageUrl: 'https://s1.elespanol.com/2019/03/04/ciencia/nutricion/nutricion_380722770_117009517_1706x1280.jpg'
-    },
-    {
-      idCategoria: 4,
-      nombre: 'Postres',
-      imageUrl: 'https://www.paulinacocina.net/wp-content/uploads/2020/01/tacos-meat-food-mexican-lunch-dinner.jpg'
-    },
-    {
-      idCategoria: 5,
-      nombre: 'Sopas y Caldos',
-      imageUrl: 'https://content.skyscnr.com/m/2dcd7d0e6f086057/original/GettyImages-186142785.jpg?resize=1224%3Aauto'
-    }, {
-      idCategoria: 6,
-      nombre: 'Adicionales',
-      imageUrl: 'https://www.bbva.com/wp-content/uploads/2023/04/cocina-de-aprovechamiento-1024x629.jpg'
-    }
-  ];
-
   getCategoriaById(id: number): Observable<Categoria> {
     return this.httpClient.get<Categoria>(`${this.URL}/categorias/${id}`).pipe(
       map((response: Categoria) => {
@@ -60,7 +23,7 @@ export class CategoriaService {
       catchError((err) => {
         console.error('Error al obtener categoria', err);
         return of();
-      })
+      }) 
     );
   }
 
@@ -102,10 +65,5 @@ export class CategoriaService {
       })
     );
   }
-  
-
- /*getProductosBySubcategoria(idSubcategoria: number): Producto[] {
-    return this.productos.filter(producto => producto.idSubcategoria === idSubcategoria);
-  }*/
 
 }

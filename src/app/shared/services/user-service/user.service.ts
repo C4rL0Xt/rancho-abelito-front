@@ -7,8 +7,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class UserService {
 
   private usernameSubject = new BehaviorSubject<string | null>(null);
-
   username$: Observable<string | null> = this.usernameSubject.asObservable();
+
+  private idClienteSubject = new BehaviorSubject<string | null>(null);
+  idCliente$: Observable<string | null> = this.idClienteSubject.asObservable();
 
   constructor() { }
 
@@ -19,6 +21,15 @@ export class UserService {
 
   getUsername(): string {
     return localStorage.getItem('username') || '';
+  }
+
+  setIdCliente(idCliente: string): void {
+    this.idClienteSubject.next(idCliente);
+    localStorage.setItem('idCliente', idCliente);
+  }
+
+  getIdCliente(): string {
+    return localStorage.getItem('idCliente') || '';
   }
 
   clearUsername(): void {

@@ -21,7 +21,7 @@ import { ProductDetailsPanelComponent } from './components/product-details-panel
   imports: [
     CommonModule,
     ProductsRoutingModule,
-    SharedModule,
+    SharedModule, 
     FormsModule
   ]
 })
