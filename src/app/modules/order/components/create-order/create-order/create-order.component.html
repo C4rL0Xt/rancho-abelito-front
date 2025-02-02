@@ -14,16 +14,48 @@
 
     <div class="paneles-container">
         <div class="panel-buscar">
+            <div class="search">
+                <form class="search-form">
+                    <input type="text" placeholder="Buscar producto" [(ngModel)]="busquedaNombre" name="busquedaNombre"
+                        (input)="aplicarFiltroBusqueda()">
+                    <div class="btnLupa">
+                        <img src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/search.png?raw=true">
+                    </div>
+                </form>
+            </div>
+            <div *ngFor="let producto of productosFiltrados" class="lista-productos">
+                <label class="nombre-product">{{producto.nombre}}</label>
+                <div class="btnLupa" (click)="agregarProductoAItems(producto)">
+                    <img src="https://github.com/C4rL0Xt/images_repo/blob/master/icons/additem.jpg?raw=true">
+                </div>
+            </div>
 
         </div>
         <div class="panel-items-and-buttons">
             <div class="panel-items">
-                <label class="num-items">Items (3)</label>
+                <label class="num-items">Items ({{items.length}})</label>
                 <div class="divisor"></div>
-                <div class="itemsp"></div>
+                <div *ngFor="let item of items" class="item-container">
+                    <div class="image-name">
+                        <img class="item-image" src="{{item.producto.image}}" alt="Arroz con pollo">
+                        <span class="item-name">{{item.producto.nombre}}</span>
+                    </div>
+                    <div class="resto">
+                        <div class="item-quantity">
+                            <input type="text" class="quantity-input" [(ngModel)]="item.cantidad">
+                            <button class="quantity-btn" (click)="changeQuantity(-1,item)">−</button>
+                            <button class="quantity-btn" (click)="changeQuantity(1,item)">+</button>
+                        </div>
+
+                        <textarea class="item-description" placeholder="Descripción ..." [(ngModel)]="item.descripcion"></textarea>
+
+                        <img class="delete-icon" src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"
+                            alt="Eliminar" (click)="eliminarItem(item)">
+                    </div>
+                </div>
             </div>
             <div class="buttons">
-                <button class="button-guardar">GUARDAR</button>
+                <button class="button-guardar" (click)="guardarCarritoDelMesero()">GUARDAR</button>
                 <button class="button-imprimir">IMPRIMIR CUENTA</button>
             </div>
         </div>

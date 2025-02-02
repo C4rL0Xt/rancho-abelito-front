@@ -7,6 +7,7 @@ import { MeseroPageComponent } from './pages/mesero-page/mesero-page.component';
 import { MesaCardComponent } from './components/mesa-card/mesa-card.component';
 import { CreateOrderComponent } from './components/create-order/create-order/create-order.component';
 import { OrderPageComponent } from './pages/order-page/order-page/order-page.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { OrderPageComponent } from './pages/order-page/order-page/order-page.com
   ],
   imports: [
     CommonModule,
-    OrderRoutingModule
+    OrderRoutingModule,
+    FormsModule
   ],
   exports: [
     CarritoPanelComponent
