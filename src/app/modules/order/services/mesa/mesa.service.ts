@@ -9,18 +9,9 @@ import { catchError, map, Observable, of } from 'rxjs';
 })
 export class MesaService {
 
-  mesas: Mesa[] = [
-    { mesaId: 1, capacidad: 4, estado: true },
-    { mesaId: 2, capacidad: 4, estado: true },
-    { mesaId: 3, capacidad: 4, estado: true },
-    { mesaId: 4, capacidad: 4, estado: true },
-    { mesaId: 5, capacidad: 4, estado: true },
-    { mesaId: 6, capacidad: 4, estado: true },
-    { mesaId: 7, capacidad: 4, estado: true },
-    { mesaId: 8, capacidad: 4, estado: true },
-  ]
-
+ 
   private readonly URL = environment.api_mesas;
+  
 
   constructor(
     private http: HttpClient

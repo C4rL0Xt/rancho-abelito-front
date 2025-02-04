@@ -12,7 +12,7 @@ import { CarritoAdd } from '../../../../core/models/carritoAdd.model';
 export class CarritoServiceService {
 
   private readonly API_URL = environment.api_carrito;
-
+  private readonly URL_PEDIDO = environment.api_pedido;
 
   private productos: CarritoDetail[] = [];
 
@@ -127,5 +127,19 @@ export class CarritoServiceService {
     } else if (nuevaCantidad === 0) {
       this.eliminarProducto(producto);
     }
+  }
+
+
+  getIdDisponible(): Observable<number> {
+    return this.httpClient.get<number>(`${this.URL_PEDIDO}/id`).pipe(
+      map((response: number) => {
+        console.log('ID DISPONIBLE: ', response);
+        return response;
+      }), 
+      catchError((err) => {
+        console.error('Error obteniendo id disponible', err);
+        return of();
+      })
+    );
   }
 }

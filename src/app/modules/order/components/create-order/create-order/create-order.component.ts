@@ -1,16 +1,24 @@
 import { ItemProductMesero } from '../../../../../core/models/ItemProductMesero.model';
+import { CarritoServiceService } from '../../../services/Carrito/carrito-service.service';
 import { ProductoListMesero } from './../../../../../core/models/productoListMesero.model';
 import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-create-order',
   templateUrl: './create-order.component.html',
-  styleUrl: './create-order.component.css'
+  styleUrl: './create-order.component.css',
+  providers: [DatePipe]
 })
 
 
 
 export class CreateOrderComponent {
+
+  idPedido: number = 0;
+  fecha: string = "";
+
+
   private productos: ProductoListMesero[] = [
     {
       idProducto: 1,
@@ -64,6 +72,15 @@ export class CreateOrderComponent {
   busquedaNombre: string = '';
   productosFiltrados = [...this.productos];
 
+  constructor(
+    private carritoService: CarritoServiceService,
+    private datePipe: DatePipe
+  ) { 
+    const fechaActual = new Date();
+    this.fecha = this.datePipe.transform(fechaActual, 'dd MMMM, yyyy, HH:mm a') ?? "";
+    this.getIdPedido();
+  }
+
   aplicarFiltroBusqueda() {
     const filtro = this.busquedaNombre.toLowerCase();
     this.productosFiltrados = this.productos.filter(producto =>
@@ -110,5 +127,9 @@ export class CreateOrderComponent {
     //Llamar al servicio que agrega el carrito p
   }
 
-
+  getIdPedido() {
+    this.carritoService.getIdDisponible().subscribe(id => {
+      this.idPedido = id;
+    });
+  }
 }
