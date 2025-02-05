@@ -1,0 +1,78 @@
+
+.dialog-content {
+  padding: 35px;
+  padding-top: 50px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: auto;
+}
+
+.close-btn {
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+.custom-table th:nth-child(1),
+.custom-table td:nth-child(1) {
+    text-align: left;
+  width: 35%;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fefaf5;
+  border-radius: 8px;
+}
+
+.custom-table th, .custom-table td {
+  padding: 10px;
+  text-align: center;
+  width: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.custom-table th{
+    color: #727272;
+    font-weight: 400;
+}
+
+.data-box {
+  display: inline-block;
+  width: 25px;
+  height: 15px;
+  padding: 5px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.status-label {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.status-label.por-entregar {
+  background: #ffecb3;
+}
+
+.status-label.entregado {
+  background: #d4edda;
+}
+
+.icon {
+  font-size: 18px;
+}

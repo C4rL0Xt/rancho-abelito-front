@@ -1,0 +1,30 @@
+<div class="dialog-content">
+
+    <button class="close-btn">✖</button>
+
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Cantidad</th>
+                <th>Listo</th>
+                <th>Cantidad entregada</th>
+                <th>Estado</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td>{{ order.name }}</td>
+                <td><span class="data-box">{{ order.cantidad }}</span></td>
+                <td><span class="data-box">{{ order.listo }}</span></td>
+                <td><span class="data-box">{{ order.entregado }}</span></td>
+                <td><span class="status-label" [ngClass]="getStatusClass(order.estado)">{{ order.estado }}</span></td>
+                <td>
+                    <span *ngIf="order.estado === 'Por entregar'" class="icon">⏳</span>
+                    <span *ngIf="order.estado === 'Entregado'" class="icon">✔️</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -8,6 +8,7 @@ import { MesaCardComponent } from './components/mesa-card/mesa-card.component';
 import { CreateOrderComponent } from './components/create-order/create-order/create-order.component';
 import { OrderPageComponent } from './pages/order-page/order-page/order-page.component';
 import { FormsModule } from '@angular/forms';
+import { OrdenEstadoComponent } from './components/orden-estado/orden-estado.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     MeseroPageComponent,
     MesaCardComponent,
     CreateOrderComponent,
-    OrderPageComponent
+    OrderPageComponent,
+    OrdenEstadoComponent
   ],
   imports: [
     CommonModule,
