@@ -16,7 +16,7 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'create',
+        path: 'create/:mesaId',
         component: CreateOrderComponent
       },{
         path: 'mesas',

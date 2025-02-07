@@ -1,5 +1,6 @@
 export interface Mesa {
     mesaId: number,
     capacidad: number,
-    estado: boolean
+    estado: boolean,
+    pedidoId: number
 }

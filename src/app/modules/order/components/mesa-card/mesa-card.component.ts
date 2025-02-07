@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class MesaCardComponent {
   estado: string = 'disponible';
   state: boolean = false;
+  panelAbierto = false;
 
   @Input() mesa: Mesa | undefined;
 
@@ -21,7 +22,15 @@ export class MesaCardComponent {
 
   constructor(private router: Router) {}
 
-  navigateToCreate() {
-    this.router.navigate(['/order/create']).catch((err) => console.error(err));
+  navigateToCreate(mesaId: number | undefined) {
+    if (mesaId !== undefined) {
+      this.router.navigate(['/order/create', mesaId]).catch((err) => console.error(err));
+    } else {
+      console.error('mesaId es undefined');
+    }
+  }
+
+  abrirPanelVerProductos(){
+    this.panelAbierto = true;
   }
 }

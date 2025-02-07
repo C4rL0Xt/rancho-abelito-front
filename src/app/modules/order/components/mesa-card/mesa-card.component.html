@@ -1,4 +1,5 @@
-<div class="card-container" [ngClass]="{'activo': mesa?.estado == false, 'inactivo': mesa?.estado == true}">
+<app-orden-estado *ngIf="panelAbierto == true" [mesaId]="mesa?.mesaId"></app-orden-estado>
+<div class="card-container" [ngClass]="{'activo': mesa?.estado == false, 'inactivo': mesa?.estado == true}"> 
     <div class="cabecera-container">
         <div class="num-mesa">
             <u>Mesa N°{{mesa?.mesaId}}</u>
@@ -13,13 +14,13 @@
         Capacidad: {{mesa?.capacidad}}
     </div>
     <div class="options-container">
-        <button (click)="navigateToCreate()" *ngIf="mesa?.estado == true">
+        <button (click)="navigateToCreate(mesa?.mesaId)" *ngIf="mesa?.estado == true">
             <span class="material-icons">sync</span>
             Asignar pedido</button>
         <button *ngIf="mesa?.estado == false">
             <span class="material-icons">sync</span>
             Actualizar Pedido</button>
-        <button *ngIf="mesa?.estado == false">
+        <button *ngIf="mesa?.estado == false" (click)="abrirPanelVerProductos()">
             <span class="material-icons">browse_gallery</span>
             Ver productos</button>
     </div>

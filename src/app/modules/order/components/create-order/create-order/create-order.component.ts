@@ -1,8 +1,12 @@
 import { ItemProductMesero } from '../../../../../core/models/ItemProductMesero.model';
 import { CarritoServiceService } from '../../../services/Carrito/carrito-service.service';
 import { ProductoListMesero } from './../../../../../core/models/productoListMesero.model';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { PedidoMeseroService } from '../../../services/pedido-mesero/pedido-mesero.service';
+import { PedidoPresencial } from '../../../../../core/models/pedidoPresencial.model';
+import { ItemPedidoPresencial } from '../../../../../core/models/ItemPedidoPresencial.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-order',
@@ -13,72 +17,55 @@ import { DatePipe } from '@angular/common';
 
 
 
-export class CreateOrderComponent {
+export class CreateOrderComponent implements OnInit{
 
   idPedido: number = 0;
   fecha: string = "";
+  mesaId! : number;
 
+  private productos: ProductoListMesero[] = [];
 
-  private productos: ProductoListMesero[] = [
-    {
-      idProducto: 1,
-      image: "https://github.com/C4rL0Xt/images_repo/blob/master/productos/arroz_mariscos.jpg?raw=true",
-      nombre: "Arroz con pollo",
-      stock: 5,
-      precio: 10
-    }, {
-      idProducto: 2,
-      image: "https://github.com/C4rL0Xt/images_repo/blob/master/productos/arroz_mariscos.jpg?raw=true",
-      nombre: "Aji de gallina",
-      stock: 3,
-      precio: 12
-    }, {
-      idProducto: 3,
-      image: "https://github.com/C4rL0Xt/images_repo/blob/master/productos/arroz_mariscos.jpg?raw=true",
-      nombre: "Escabeche de pescado",
-      stock: 4,
-      precio: 15
-    }, {
-      idProducto: 4,
-      image: "https://github.com/C4rL0Xt/images_repo/blob/master/productos/arroz_mariscos.jpg?raw=true",
-      nombre: "Ceviche",
-      stock: 5,
-      precio: 16
-    }, {
-      idProducto: 5,
-      image: "https://github.com/C4rL0Xt/images_repo/blob/master/productos/arroz_mariscos.jpg?raw=true",
-      nombre: "Sopa de caracol",
-      stock: 6,
-      precio: 11
-    }
-  ]
-
-  items: ItemProductMesero[] = [
-    {
-      producto: this.productos[0],
-      idEstado: 1,
-      cantidad: 3,
-      descripcion: "2 con presita parte pierna y 1 parte pecho xd",
-      subtotal: 23.2
-    }, {
-      producto: this.productos[1],
-      idEstado: 1,
-      cantidad: 2,
-      descripcion: "2 con presita parte pierna y 1 parte pecho xd",
-      subtotal: 23.2
-    }
-  ];
+  items: ItemProductMesero[] = [];
 
   busquedaNombre: string = '';
   productosFiltrados = [...this.productos];
 
   constructor(
     private carritoService: CarritoServiceService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private pedidoMeseroService: PedidoMeseroService,
+    private route: ActivatedRoute
   ) { 
     const fechaActual = new Date();
     this.fecha = this.datePipe.transform(fechaActual, 'dd MMMM, yyyy, HH:mm a') ?? "";
     this.getIdPedido();
+    this.loadProductos();
+    console.log('Pedido inicializado:', this.idPedido);
+  }
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.mesaId = Number(params.get('mesaId'));
+      console.log('Mesa ID recibido:', this.mesaId);
+    });
+  }
+
+  asignarPedido() {
+    this.idPedido = 8;
+    console.log('Pedido asignado:', this.idPedido);
+  }
+
+  loadProductos() {
+    this.pedidoMeseroService.getProductos().subscribe(productos => {
+      this.productos = productos;
+      this.productosFiltrados = productos;
+    });
+  }
+
+  createPedido(pedido: PedidoPresencial) {
+    this.pedidoMeseroService.createPedidoPresencial(pedido).subscribe(response => {
+      console.log(response);
+    });
   }
 
   aplicarFiltroBusqueda() {
@@ -123,8 +110,23 @@ export class CreateOrderComponent {
 
   guardarCarritoDelMesero() {
     this.calcularSubtotal();
-    console.log(this.items);
     //Llamar al servicio que agrega el carrito p
+    const detalles: ItemPedidoPresencial[] = this.items.map(item => {
+      return {
+        idProducto: item.producto.idProducto,
+        cantidad: item.cantidad,
+        descripcion: item.descripcion,
+        precio: item.producto.precio
+      }
+    });
+
+    const pedido: PedidoPresencial = {
+      idMesero: "C710",
+      idMesa: 1,
+      detalles: detalles
+    }
+
+    this.createPedido(pedido);
   }
 
   getIdPedido() {
