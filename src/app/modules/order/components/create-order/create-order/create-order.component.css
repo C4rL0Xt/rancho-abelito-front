@@ -41,6 +41,7 @@
 .panel-buscar {
     width: 30%;
     border-radius: 8px;
+    box-sizing: border-box;
     background-color: rgb(255, 255, 255);
 }
 
@@ -118,6 +119,13 @@ input[type="text"]:focus {
     outline: none;
 }
 
+.lista-de-productos{
+
+    max-height: 80%;
+    height: auto;
+    overflow-y: auto;
+}
+
 .lista-productos{
     margin-left: 12%;
     margin-right: 12%;
@@ -128,6 +136,19 @@ input[type="text"]:focus {
     align-items: center;
     padding-bottom: 10px;
     margin-bottom: 10px;
+
+    
+}
+
+
+
+.nombre-product {
+    display: flex;
+    column-gap: 10px;
+}
+
+.precio-product {
+    color: #b6adad;
 }
 
 .lista-productos label{
@@ -175,6 +196,13 @@ input[type="text"]:focus {
     background-color: #CFE3FA;
 }
 
+
+.it{
+    max-height: 75%;
+    height: auto;
+    overflow-y: auto;
+}
+
 .item-container {
     display: flex;
     align-items: center;
@@ -186,7 +214,6 @@ input[type="text"]:focus {
     box-sizing: border-box;
     border-radius: 8px;
     justify-content: space-between;
-    
     
 
 }

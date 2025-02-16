@@ -2,7 +2,7 @@ import { ProductoListMesero } from "./productoListMesero.model";
 
 export interface ItemProductMesero{
     producto: ProductoListMesero,
-    idEstado: number,
+    estado: string,
     cantidad: number,
     descripcion: string,
     subtotal: number

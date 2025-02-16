@@ -27,7 +27,7 @@ export class CarritoServiceService {
       var details: CarritoAdd = {
         idProducto: this.productos[i].producto.idProducto,
         cantidad: this.productos[i].cantidad,
-        descripcion: this.productos[i].producto.descripcion,
+        descripcion: this.productos[i].producto.descripcion ?? '',
         idCarrito: Number(localStorage.getItem('idCarrito')),
         idCliente: localStorage.getItem('idCliente') ?? '',
         precio: this.productos[i].producto.precio

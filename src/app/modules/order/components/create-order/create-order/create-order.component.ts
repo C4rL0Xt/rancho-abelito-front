@@ -7,6 +7,10 @@ import { PedidoMeseroService } from '../../../services/pedido-mesero/pedido-mese
 import { PedidoPresencial } from '../../../../../core/models/pedidoPresencial.model';
 import { ItemPedidoPresencial } from '../../../../../core/models/ItemPedidoPresencial.model';
 import { ActivatedRoute } from '@angular/router';
+import { ResponsePedido } from '../../../../../core/models/responsePedido.model';
+import { CarritoDetail } from '../../../../../core/models/carritoDetail.model';
+import { Producto } from '../../../../../core/models/type.model';
+import { CarritoAdd } from '../../../../../core/models/carritoAdd.model';
 
 @Component({
   selector: 'app-create-order',
@@ -20,13 +24,15 @@ import { ActivatedRoute } from '@angular/router';
 export class CreateOrderComponent implements OnInit{
 
   idPedido: number = 0;
+  idCarrito: number = 0;
   fecha: string = "";
   mesaId! : number;
 
   private productos: ProductoListMesero[] = [];
 
-  items: ItemProductMesero[] = [];
-
+  items: CarritoDetail[] = [];
+  pedidoPresencial: ResponsePedido | undefined;
+ 
   busquedaNombre: string = '';
   productosFiltrados = [...this.productos];
 
@@ -36,18 +42,55 @@ export class CreateOrderComponent implements OnInit{
     private pedidoMeseroService: PedidoMeseroService,
     private route: ActivatedRoute
   ) { 
+    this.route.paramMap.subscribe(params => {
+      this.mesaId = Number(params.get('mesaId'));
+      console.log('Mesa ID recibido:', this.mesaId);
+    });
+    
     const fechaActual = new Date();
     this.fecha = this.datePipe.transform(fechaActual, 'dd MMMM, yyyy, HH:mm a') ?? "";
     this.getIdPedido();
     this.loadProductos();
     console.log('Pedido inicializado:', this.idPedido);
+    
+    this.loadDetallesPorMesa();
+  }
+
+  loadDetallesPorMesa(){
+    this.pedidoMeseroService.getPedidoPresencial(this.mesaId).subscribe(
+      (response) => {
+        console.log('respuesta de detalles por mesa: ',response);
+        this.pedidoPresencial = response;
+        this.items = this.pedidoPresencial.detalles;
+        this.idPedido = this.pedidoPresencial.idPedido;
+        this.idCarrito = this.pedidoPresencial.idCarrito;
+        console.log('Detalles de pedido:', this.items);
+      }
+    )
+  }
+
+  actualizarPedido() {
+    console.log('Actualizando pedido:', this.items);
+
+    var detalles: CarritoAdd[] = this.items.map(item => {
+      return {
+        idProducto: item.producto.idProducto,
+        cantidad: item.cantidad,
+        descripcion: item.adicionales,
+        precio: item.producto.precio,
+        idCarrito: this.idCarrito
+      }
+    })
+
+    this.pedidoMeseroService.addListCarrito(detalles).subscribe(
+      (response) => {
+        console.log('Respuesta del servidor', response);
+      }
+    );
   }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.mesaId = Number(params.get('mesaId'));
-      console.log('Mesa ID recibido:', this.mesaId);
-    });
+  
   }
 
   asignarPedido() {
@@ -81,30 +124,46 @@ export class CreateOrderComponent implements OnInit{
       console.log("Este producto ya ha sido agregado.");
       return;
     }
-    var item: ItemProductMesero = {
-      producto: producto,
-      idEstado: 1,
-      cantidad: 1,
-      descripcion: "",
-      subtotal: 0
+
+    var product: Producto = {
+      idProducto: producto.idProducto,
+      nombre: producto.nombre,
+      precio: producto.precio,
+      imagenUrl: producto.image
     }
+
+    var item: CarritoDetail = {
+      producto: product,
+      cantidad: 1,
+      adicionales: "",
+      total: 0
+    }
+
     this.items.push(item);
   }
 
-  changeQuantity(change: number, item: ItemProductMesero) {
+  changeQuantity(change: number, item: CarritoDetail) {
     item.cantidad += change;
-    if (item.cantidad < 1) item.cantidad = 1;
-    console.log(this.items);
+    
+    if (item.cantidad < 1) {
+      item.cantidad = 1;
+    }
+    this.reducirStock(item.producto.idProducto,change);
+  }
 
+  reducirStock(idProducto: number,cantidad: number){
+    var producto: ProductoListMesero | undefined = this.productos.find(product => product.idProducto == idProducto);
+    producto!.stock -= cantidad ?? 0;
+    
   }
 
   calcularSubtotal() {
     for (let item of this.items) {
-      item.subtotal = item.cantidad * item.producto.precio;
+      item.total = item.cantidad * item.producto.precio;
     }
   }
 
-  eliminarItem(item: ItemProductMesero) {
+  eliminarItem(item: CarritoDetail) {
     this.items = this.items.filter(existingItem => existingItem.producto.idProducto !== item.producto.idProducto);
   }
 
@@ -115,7 +174,7 @@ export class CreateOrderComponent implements OnInit{
       return {
         idProducto: item.producto.idProducto,
         cantidad: item.cantidad,
-        descripcion: item.descripcion,
+        descripcion: item.adicionales,
         precio: item.producto.precio
       }
     });

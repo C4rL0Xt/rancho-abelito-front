@@ -33,4 +33,8 @@ export class MesaCardComponent {
   abrirPanelVerProductos(){
     this.panelAbierto = true;
   }
+
+  cerrarPanel(){
+    this.panelAbierto = false;
+  }
 }

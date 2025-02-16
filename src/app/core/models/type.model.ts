@@ -12,9 +12,9 @@ export interface SubCategoria{
 
 export interface Producto{
     idProducto: number,
-    idSubcategoria: number,
+    idSubcategoria?: number,
     nombre: string,
-    descripcion: string,
+    descripcion?: string,
     precio: number,
     imagenUrl: string
 }

@@ -5,6 +5,9 @@ import { catchError, map, Observable, of } from 'rxjs';
 import { ProductoListMesero } from '../../../../core/models/productoListMesero.model';
 import { PedidoPresencial } from '../../../../core/models/pedidoPresencial.model';
 import { ResponsePedidoPresencial } from '../../../../core/models/responsePedidoPresencial.model';
+import { ResponsePedido } from '../../../../core/models/responsePedido.model';
+import { CarritoDetail } from '../../../../core/models/carritoDetail.model';
+import { CarritoAdd } from '../../../../core/models/carritoAdd.model';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +47,32 @@ export class PedidoMeseroService {
     );
   }
 
+  getPedidoPresencial(idMesa: number): Observable<ResponsePedido> {
+    return this.http.get(`${this.API_URL_CARRITO}/presencial/get/${idMesa}`).pipe(
+      map((response: any) => {
+        console.log(response);
+        return response;
+      }),
+      catchError((err) => {
+        console.error('Error obteniendo pedido', err);
+        return of();
+      })
+    );
+  }
 
+  addListCarrito(items: CarritoAdd[]): Observable<string>{
+     
+      return this.http.post<string>(`${this.API_URL_CARRITO}/add`, items,  { responseType: 'text' as 'json' }).pipe(
+        map((response: string) => {
+          console.log(response);
+          return response;
+        }),
+        catchError((err) => {
+          console.error('Error agregando la lista carrito', err);
+          return of();
+        })
+      );
+    }
+  
   
 }

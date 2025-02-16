@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-orden-estado',
@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class OrdenEstadoComponent {
 
   @Input() mesaId?: number;
+  @Output() cerrar = new EventEmitter<void>();
 
   orders = [
     { name: 'Arroz con pollo', cantidad: null, listo: null, entregado: null, estado: 'Por entregar' },
@@ -21,5 +22,9 @@ export class OrdenEstadoComponent {
       'por-entregar': status === 'Por entregar',
       'entregado': status === 'Entregado'
     };
+  }
+
+  cerrarPanel(){
+    this.cerrar.emit();
   }
 }
