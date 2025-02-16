@@ -49,19 +49,19 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px); /* Difuminado para estética */
+    backdrop-filter: blur(10px); 
     padding: 16px 24px;
     border-radius: 12px;
     text-align: center;
     width: 80%; 
-    opacity: 0; /* Oculto inicialmente */
+    opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    transform: translate(-50%, -40%); /* Desplazado hacia arriba inicialmente */
+    transform: translate(-50%, -40%); 
 }
 
 .card-container:hover .data-section {
-    opacity: 1; /* Aparece al hacer hover */
-    transform: translate(-50%, -50%); /* Vuelve a su posición original */
+    opacity: 1; 
+    transform: translate(-50%, -50%);
 }
 
 .data-section-title {
