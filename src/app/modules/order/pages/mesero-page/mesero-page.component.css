@@ -14,32 +14,3 @@
         padding: 10px;
     }
 }
-
-
-/*
-.text-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.h1,h2 {
-    text-align: center;
-}
-
-.img-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    object-fit: cover;
-}
-
-.img-container img {
-    
-    width: 100%;
-    height: auto;
-}*/
