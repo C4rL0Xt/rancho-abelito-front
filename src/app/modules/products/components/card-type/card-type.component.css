@@ -39,8 +39,8 @@
 }
 
 .card-container:hover .image {
-    transform: scale(1.1); /* Zoom en la imagen */
-    filter: grayscale(0%) brightness(1); /* Colores vivos */
+    transform: scale(1.1); 
+    filter: grayscale(0%) brightness(1); 
 }
 
 .data-section {
