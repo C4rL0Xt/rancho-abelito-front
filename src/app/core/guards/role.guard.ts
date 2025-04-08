@@ -24,8 +24,7 @@ export const roleGuard: CanActivateFn = (
 
   const expectedRole = route.data['expectedRole'];
   const currentUser = localStorage.getItem('rol');
-  console.log('Rol esperado', expectedRole);
-  console.log('Rol current: ', currentUser);
+
 
   if (currentUser && currentUser == expectedRole) {
     return true;
